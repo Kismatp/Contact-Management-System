@@ -16,9 +16,9 @@ public:
     }
 };
 
-Contact* head = nullptr; // Global head pointer
+Contact* head = nullptr; 
 
-// Function prototypes
+
 void addContact();
 void searchContact();
 void displayContacts();
