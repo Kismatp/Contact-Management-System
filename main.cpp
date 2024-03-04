@@ -16,7 +16,7 @@ public:
     }
 };
 
-Contact* head = nullptr; 
+Contact* head = nullptr;
 
 
 void addContact();
@@ -51,7 +51,7 @@ int main() {
                 deleteContact();
                 break;
             case 5:
-                cout << "******************************Exiting******************************" << endl;
+                cout << "*****************************Exiting*****************************" << endl;
                 break;
             default:
                 cout << "Invalid choice!" << endl;
@@ -63,14 +63,29 @@ int main() {
 
 void addContact() {
     string name, phone;
+    int count=0;
     cout << "Enter name: ";
     cin >> name;
+    Contact* current = head;
+    while (current != nullptr) {
+        if (current->name == name) {
+                count++;
+        }
+        current = current->next;
+    }
+    if(count==0)
+    {
     cout << "Enter phone number: ";
     cin >> phone;
     Contact* newContact = new Contact(name, phone);
     newContact->next = head;
     head = newContact;
     cout << "Contact added successfully!" << endl;
+    }
+    else
+     cout << "Contact name repeated"<<endl;
+
+
 }
 
 void searchContact() {
@@ -81,12 +96,12 @@ void searchContact() {
     Contact* current = head;
     while (current != nullptr) {
         if (current->name == nameToSearch) {
-            cout << "********************Contact found********************"<<endl <<"Name:  "<< current->name << ", " <<"Phone Number: "<< current->phone << endl;
+            cout << "*******************Contact found*******************"<<endl <<"Name:  "<< current->name << ", " <<"Phone Number: "<< current->phone << endl;
             return;
         }
         current = current->next;
     }
-    cout << "*****Contact not found*****" << endl;
+    cout << "****Contact not found****" << endl;
 }
 
 void displayContacts() {
